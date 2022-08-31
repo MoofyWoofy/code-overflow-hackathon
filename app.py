@@ -3,10 +3,10 @@ import datetime
 from cryptography.fernet import Fernet
 from flask import Flask, render_template, request, redirect, url_for, session, flash, abort
 from flask_mysqldb import MySQL
-from Forms import CreateWarehouseForm
+# from Forms import CreateWarehouseForm
 import MySQLdb.cursors
 import re
-import shelve, Inventorys
+# import shelve, Inventorys
 import requests, json, pathlib
 import os
 from pip._vendor import cachecontrol
@@ -27,7 +27,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'ur password in mysql'
+app.config['MYSQL_PASSWORD'] = 'melvin'
 app.config['MYSQL_DB'] = 'pythonlogin'
 
 GOOGLE_CLIENT_ID = "1019735437864-5h23ehvveeut9euf3ls9j1gqamhbm4k1.apps.googleusercontent.com"
@@ -399,6 +399,18 @@ def logout():
     session.clear()
     # Redirect to login page
     return redirect(url_for('login'))
+
+
+@app.route('/rankings/')
+def rankings():
+    if 'loggedin' not in session:
+        return redirect(url_for('login'))
+
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM accounts ORDER BY points DESC")
+
+    rankings = cursor.fetchmany(10)
+    return render_template('rankings.html', rankings=rankings)
 
 
 if __name__ == '__main__':
