@@ -1,0 +1,27 @@
+{% extends 'layout.html' %}
+{% block title %}Rankings{% endblock %}
+
+
+{% block content %}
+
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>Points</th>
+      </tr>
+    </thead>
+    <tbody>
+    {% for rank in rankings %}
+      <tr>
+        <td>{{ rank.username }}</td>
+        <td>{{ rank.points }}</td>
+      </tr>
+    {% endfor %}
+
+    </tbody>
+  </table>
+
+
+{% endblock %}
