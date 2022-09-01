@@ -409,8 +409,21 @@ def rankings():
     cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
     cursor.execute("SELECT * FROM accounts ORDER BY points DESC")
 
-    rankings = cursor.fetchmany(10)
-    return render_template('rankings.html', rankings=rankings)
+    rankings_list = cursor.fetchmany(10)
+    return render_template('rankings.html', rankings=rankings_list)
+
+
+@app.route('/rewards/')
+def rewards():
+    rewards_available = [
+        # https://i.pinimg.com/736x/8a/62/bb/8a62bbf382928fe1993445cf0a69cc4a--card-ui-ui-animation.jpg
+        {"title": "Grab Gift Card", "img": "https://cdn.worldvectorlogo.com/logos/grab.svg", "price": "$5 (5,000 pts)"},
+        {"title": "Grab Gift Card", "img": "https://cdn.worldvectorlogo.com/logos/grab.svg", "price": "$10 (10,000 pts)"},
+        {"title": "Spotify 1 Month Premium", "img": "https://cdn.worldvectorlogo.com/logos/spotify-2.svg", "price": "$5 (5,000 pts)"},
+        {"title": "Apple Gift Card", "img": "https://cdn.worldvectorlogo.com/logos/apple1.svg", "price": "$25 (25,000 pts)"},
+        {"title": "Google Play Gift Card", "img": "https://cdn.worldvectorlogo.com/logos/google-play-5.svg", "price": "$10 (10,000 pts)"},
+    ]
+    return render_template('rewards.html', rewards=rewards_available)
 
 
 if __name__ == '__main__':
