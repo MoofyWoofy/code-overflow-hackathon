@@ -1,0 +1,103 @@
+{% extends 'layout.html' %}
+{% block title %}Points{% endblock %}
+
+
+{% block content %}
+      <div class="service">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Earn NOW</h2>
+                     <span>Ways to reduce carbon footprint</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container margin-r-l">
+            <div class="row">
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 thumb">
+                  <div class="service-box">
+                     <figure>
+                        <a href="images/food.webp" class="fancybox" rel="ligthbox">
+                        <img style="height:300px;" src="../static/images/food.webp" class="zoom img-fluid "  alt="">
+                        </a>
+                        <span class="hoverle">
+                        <a href="../static/images/food2.PNG" class="fancybox" rel="ligthbox">Food</a>
+                        </span>  
+                     </figure>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 thumb">
+                  <div class="service-box">
+                     <figure>
+                        <a href="../static/images/clothing.jpg" class="fancybox" rel="ligthbox">
+                        <img style="height:300px;" src="../static/images/clothing.jpg" class="zoom img-fluid "  alt="">
+                        </a>
+                        <span class="hoverle">
+                        <a href="../static/images/clothing2.PNG" class="fancybox" rel="ligthbox">Clothing</a>
+                        </span>
+                     </figure>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 thumb">
+                  <div class="service-box">
+                     <figure>
+                        <a href="../static/images/transport.avif" class="fancybox" rel="ligthbox">
+                        <img style="height:300px;" src="../static/images/transport.avif" class="zoom img-fluid "  alt="">
+                        </a>
+                        <span class="hoverle">
+                        <a href="../static/images/transport2.PNG" class="fancybox" rel="ligthbox">Transport</a>
+                        </span>
+                     </figure>
+                  </div>
+               </div>
+               <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12 thumb">
+                  <div class="service-box">
+                     <figure>
+                        <a href="../static/images/energy.jfif" class="fancybox" rel="ligthbox">
+                        <img style="height:300px;" src="../static/images/energy.jfif" class="zoom img-fluid "  alt="">
+                        </a>
+                        <span class="hoverle">
+                        <a href="../static/images/energy2.PNG" class="fancybox" rel="ligthbox">Energy</a>
+                        </span> 
+                     </figure>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <div class="service">
+         <div class="container">
+            <div class="row">
+               <div class="col-md-12">
+                  <div class="titlepage">
+                     <h2>Points</h2>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="container margin-r-l">
+            <div class="row">
+               <form action="">
+                    <input type="file" id="myFile" name="filename">
+                  <br/>
+                  <br/>
+                  <span>Actions: </span>
+                    <input list="actions" name="actions">
+                     <datalist id="actions">
+                        <option value="Saved plastic bottles">
+                        <option value="saved plastic straws">
+                        <option value="Used reusable tote bags">
+                        <option value="Traveled with public transportation">
+                     </datalist>
+                  <br/>
+                  <br/>
+                  <button class="btn btn-primary" type="button">Add Points!</button>
+               </form>
+            </div>
+         </div>
+      </div>
+      <!-- end service -->
+{% endblock %}

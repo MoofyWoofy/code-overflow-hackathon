@@ -5,6 +5,7 @@
 {% block content %}
 
 
+
       <section class="slider_section">
          <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
             <div class="carousel-inner">
@@ -13,7 +14,7 @@
                   <div class="container">
                      <div class="carousel-caption relative">
                         <h1>Welcome back <span>User</span>!</h1>
-                        <a  href="{{ url_for('points') }}">Check your points</a>
+                        <a  href="points.html">Check your points</a>
                      </div>
                   </div>
                </div>
@@ -22,7 +23,7 @@
                   <div class="container">
                      <div class="carousel-caption relative">
                         <h1>Attractive Prizes</h1>
-                        <a  href="{{ url_for('rewards') }}">Claim NOW!</a>
+                        <a  href="rewards.html">Claim NOW!</a>
                      </div>
                   </div>
                </div>
@@ -91,6 +92,4 @@
          </div>
       </div>
       <!-- end our blog -->
-     
-
-{% endblock %}
+    {% endblock %}

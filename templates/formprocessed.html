@@ -22,7 +22,7 @@
       <!-- fevicon -->
       <link rel="icon" href="../static/images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
-      <link rel="stylesheet" href="css/jquery.mCustomScrollbar.min.css">
+      <link rel="stylesheet" href="../static/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
       <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
@@ -55,20 +55,18 @@
                      <div class="limit-box">
                         <nav class="main-menu">
                            <ul class="menu-area-main">
-                              <li> <a href="{{ url_for('index') }}">Home</a> </li>
-                              <li> <a href="{{ url_for('about') }}">About</a> </li>
-                              <li> <a href="{{ url_for('points') }}">Points</a> </li>
-                              <li class="active"> <a href="{{ url_for('rewards') }}">Rewards</a> </li>
-                              <li> <a href="{{ url_for('account') }}">Account</a> </li>
-                              <li style="padding-left: 10px;"><img src="../static/images/user.svg" width="50px" alt="Image" ><p style="color: white;">Kiran Acharya</p></li>
-                              <li><a href="{{ url_for('index1') }}">Logout</a></li>
+                              <li> <a href="index.html">Home</a> </li>
+                              <li class="active"> <a href="about.html">About</a> </li>
+                              <li> <a href="points.html">Points</a> </li>
+                              <li> <a href="rewards.html">Rewards</a> </li>
+                              <li> <a href="account.html">Account</a> </li>
+                              <li style="padding-left: 10px;"><img src="images/user.svg" width="50px" alt="Image" ><p style="color: white;">Kiran Acharya</p></li>
                            </ul>
                         </nav>
                      </div>
                   </div>
                </div>
             </div>
-         </div>
          </div>
          <!-- end header inner --> 
       </header>
@@ -79,29 +77,13 @@
            <div class="row">
               <div class="col-md-12">
                  <div class="titlepage">
-                    <h2>Rewards</h2>
-                    <span>Exchange your points with items below!</span>
+                    <h2>Form Submitted!</h2>
+                    <span>We will review and get back to you if necessary in 3 working days.</span><br>
+                    <img style="margin-top: 20px ;" width="400px" src="../static/images/logo.jpeg">
                  </div>
+                 
               </div>
            </div>
-        </div>
-        <div class="container margin-r-l">
-           <main clas="d-flex flex-wrap justify-content-center gap-4" style="margin-inline: 2rem;">
-    <div style="display:grid;grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));gap: 1rem;">
-    {% for reward in rewards %}
-            <div class="card" style="border: none;border-radius: 5%;box-shadow: 0 0px 15px 5px hsl(0deg 0% 50%);height: 100%;">
-              <img src="{{ reward.img }}" class="card-img-top" alt="..." style="aspect-ratio: 16 / 9;background: linear-gradient(135deg, #ef26a5, #3dedd2);border-start-end-radius: inherit;padding:1rem;">
-              <div class="card-body" style="display: flex;margin: auto;gap: 2rem;">
-                <div>
-                    <h5 class="card-title">{{ reward.title }}</h5>
-                    <p class="card-text">{{ reward.price}}</p>
-                </div>
-                  <button onclick="alert('Successfully redeemed')" class="btn btn-primary" style="align-self: center;padding: 1em 2em;">Buy</button>
-              </div>
-          </div>
-    {% endfor %}
-    </div>
-</main>
         </div>
      </div>
       <!-- end service -->
@@ -121,9 +103,9 @@
                        <h3>Menus</h3>
                        <ul>
                           <li> <a href="index.html">Home</a> </li>
-                          <li> <a href="about.html">About</a> </li>
+                          <li class="active"> <a href="about.html">About</a> </li>
                           <li> <a href="points.html">Points</a> </li>
-                          <li class="active"> <a href="rewards.html">Rewards</a> </li>
+                          <li> <a href="rewards.html">Rewards</a> </li>
                           <li> <a href="account.html">Account</a> </li>
                        </ul>
                     </div>
@@ -131,7 +113,7 @@
                  <div class="col-lg-3 col-md-6 col-sm-12 width">
                     <div class="address">
                        <h3>Useful Links</h3>
-                       <i><img src="../static/icon/1.png"><a href="https://ourworldindata.or
+                       <i><img src="icon/1.png"><a href="https://ourworldindata.or
                           g/explorers/climate-change?facet=none&hideControls=true&Metric=Tem++++++++pe
                           rature+anomaly&Long-run+series%3F=false&country=OWID_WRL~ATA~Gulkana+Glacier~Lemon
                           +Creek+G++++++++lacier~North+America~South+Cascade+Glacier~Wolverine+Glacier">Our World in Data</a></i>
