@@ -28,7 +28,7 @@ os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 # Enter your database connection details below
 app.config['MYSQL_HOST'] = 'localhost'
 app.config['MYSQL_USER'] = 'root'
-app.config['MYSQL_PASSWORD'] = 'melvin'
+app.config['MYSQL_PASSWORD'] = 'Shaveda123'
 app.config['MYSQL_DB'] = 'pythonlogin'
 
 GOOGLE_CLIENT_ID = "1019735437864-5h23ehvveeut9euf3ls9j1gqamhbm4k1.apps.googleusercontent.com"
@@ -76,14 +76,11 @@ mysql = MySQL(app)
 def base():
     return render_template('index1.html')
 
-
 @app.route("/google_login")
 def google_login():
     authorization_url, state = flow.authorization_url()
     session["state"] = state
     return redirect(authorization_url)
-
-
 @app.route('/MyWebApp/', methods=['GET', 'POST'])
 def login():
     # Output message if something goes wrong...
@@ -114,8 +111,6 @@ def login():
         msg = 'Incorrect username/password!'
     # Show the login form with message (if any)
     return render_template('index_login.html', msg='')
-
-
 @app.route('/MyWebApp/register', methods=['GET', 'POST'])
 def register():
     sitekey = "6LdS-vogAAAAAKoyS9QGjo0ZTJLraQB8XEb6Ess9"
@@ -128,8 +123,8 @@ def register():
         password = request.form['password']
         email = request.form['email']
         hashpwd = bcrypt.generate_password_hash(password)
-        # captcha_response = request.form['g-recaptcha-response']
-        if True:  # is_human(captcha_response): # FIX
+        captcha_response = request.form['g-recaptcha-response']
+        if is_human(captcha_response):
             # Check if account exists using MySQL
             cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
             cursor.execute('SELECT * FROM accounts WHERE username = %s', (username,))
@@ -145,7 +140,7 @@ def register():
                 msg = 'Please fill out the form!'
             else:
                 # Account doesnt exists and the form data is valid, now insert new account into accounts table
-                cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s, 0)',
+                cursor.execute('INSERT INTO accounts VALUES (NULL, %s, %s, %s)',
                                (username, hashpwd, email,))
                 mysql.connection.commit()
                 msg = 'You have successfully registered!'
@@ -155,7 +150,6 @@ def register():
 
     # Show registration form with message (if any)
     return render_template('register.html', msg=msg, sitekey=sitekey)
-
 
 @app.route("/callback")
 def callback():
@@ -179,8 +173,6 @@ def callback():
     session["name"] = id_info.get("name")
     session["google_email"]= id_info.get("google_email")
     return redirect("/MyWebApp/index")
-
-
 @app.route('/MyWebApp/index')
 def index():
     # Check if user is loggedin
@@ -191,18 +183,12 @@ def index():
         return render_template('index.html')
     # User is not loggedin redirect to login page
     return redirect(url_for('login'))
-
-
 @app.route('/MyWebApp/about')
 def about():
     return render_template('about.html')
-
-
-@app.route('/MyWebApp/points')  # TODO actions for points
+@app.route('/MyWebApp/points')
 def points():
     return render_template('points.html')
-
-
 @app.route('/MyWebApp/rewards')
 def rewards():
     rewards_available = [
@@ -214,13 +200,19 @@ def rewards():
         {"title": "Google Play Gift Card", "img": "https://cdn.worldvectorlogo.com/logos/google-play-5.svg", "price": "$10 (10,000 pts)"},
     ]
     return render_template('rewards.html', rewards=rewards_available)
-
-
 @app.route('/MyWebApp/account')
 def account():
     return render_template('account.html')
+@app.route('/MyWebApp/ranking')
+def ranking():
+    if 'loggedin' not in session:
+        return redirect(url_for('login'))
 
+    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
+    cursor.execute("SELECT * FROM accounts_ranking ORDER BY points DESC")
 
+    rankings_list = cursor.fetchmany(10)
+    return render_template('ranking.html', rankings=rankings_list)
 @app.route('/MyWebApp/index1')
 def index1():
     session.pop('loggedin', None)
@@ -228,36 +220,6 @@ def index1():
     session.pop('username', None)
     session.clear()
     return render_template('index1.html')
-
-
-@app.route('/MyWebApp/profile')
-def profile():
-    # Check if user is loggedin
-    if 'loggedin' in session:
-        # We need all the account info for the user so we can display it on the profile page
-        cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-        cursor.execute('SELECT * FROM accounts WHERE id = %s', (session['id'],))
-        account = cursor.fetchone()
-        # Show the profile page with account info
-        return render_template('profile.html', account=account)
-
-    elif "google_id" in session:
-        return render_template('profile_google.html')
-    # User is not loggedin redirect to login page
-    return redirect(url_for('login'))
-
-
-@app.route('/MyWebApp/ranking')
-def ranking():
-    if 'loggedin' not in session:
-        return redirect(url_for('login'))
-
-    cursor = mysql.connection.cursor(MySQLdb.cursors.DictCursor)
-    cursor.execute("SELECT * FROM accounts ORDER BY points DESC")
-
-    rankings_list = cursor.fetchmany(10)
-    return render_template('ranking.html', rankings=rankings_list)
-
 
 if __name__ == '__main__':
     app.run(debug=True)

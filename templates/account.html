@@ -1,9 +1,84 @@
-{% extends 'layout.html' %}
-{% block title %}Account{% endblock %}
+<!DOCTYPE html>
+<html lang="en">
 
+<head>
+    <!-- basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- mobile metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- site metas -->
+    <title>Eco Healing</title>
+    <link rel="icon" type="image/x-icon" href="images/favicon.ico">
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- bootstrap css -->
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css">
+    <!-- style css -->
+    <link rel="stylesheet" href="../static/css/style.css">
+    <!-- Responsive-->
+    <link rel="stylesheet" href="../static/css/responsive.css">
+    <!-- fevicon -->
+    <link rel="icon" href="../static/images/fevicon.png" type="image/gif" />
+    <!-- Scrollbar Custom CSS -->
+    <link rel="stylesheet" href="../static/css/jquery.mCustomScrollbar.min.css">
+    <!-- Tweaks for older IEs-->
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css"
+        media="screen">
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
 
-{% block content %}
-<!-- service -->
+<body class="main-layout">
+    <!-- loader  -->
+    <div class="loader_bg">
+        <div class="loader"><img src="../static/images/loading.gif" alt="#" /></div>
+    </div>
+    <!-- end loader -->
+    <!-- header -->
+    <header>
+        <!-- header inner -->
+        <div class="header" style="padding:10px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="Logo"> <a href="index.html"><img width="120px"
+                                            style="margin-top: 5px ; margin-bottom:5px;" src="../static/images/logo1.PNG"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                        <div class="menu-area">
+                            <div class="limit-box">
+                                <nav class="main-menu">
+                                    <ul class="menu-area-main">
+                                        <li> <a href="{{ url_for('index') }}">Home</a> </li>
+                                        <li> <a href="{{ url_for('about') }}">About</a> </li>
+                                        <li> <a href="{{ url_for('points') }}">Points</a> </li>
+                                        <li> <a href="{{ url_for('rewards') }}">Rewards</a> </li>
+                                        <li> <a href="{{ url_for('ranking') }}">Ranking</a> </li>
+                                        <li class ="active"> <a href="{{ url_for('account') }}">Account</a> </li>
+                                        <li style="padding-left: 10px;"><img src="../static/images/user.svg" width="50px" alt="Image" ><p style="color: white;">Kiran Acharya</p></li>
+                                        <li><a href="{{ url_for('index1') }}">Logout</a></li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end header inner -->
+    </header>
+    <!-- end header -->
+    <!-- service -->
     <div id="service" class="service">
         <div class="container">
             <div class="row">
@@ -19,7 +94,7 @@
                                         <div class="img-circle text-center mb-3">
                                             <img src="../static/images/user.svg" width="100px" alt="Image" >
                                         </div>
-                                        <h4 class="text-center">{{ session['username'] }}</h4>
+                                        <h4 class="text-center">Kiran Acharya</h4>
                                     </div>
                                     <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist"
                                         aria-orientation="vertical">
@@ -166,6 +241,85 @@
             </div>
         </div>
     </div>
-<!-- end service -->
+    <!-- end service -->
+    <!--  footer -->
+    <footr>
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-12 width">
+                        <div class="address">
+                            <h3>Address</h3>
+                            <i><img src="../static/icon/3.png">180 Ang Mo Kio Ave 8, Singapore 569830</i>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-6 col-sm-12 width">
+                        <div class="address">
+                            <h3>Menus</h3>
+                            <ul>
+                                <li> <a href="index.html">Home</a> </li>
+                                <li> <a href="about.html">About</a> </li>
+                                <li> <a href="points.html">Points</a> </li>
+                                <li> <a href="rewards.html">Rewards</a> </li>
+                                <li class="active"> <a href="account.html">Account</a> </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-6 col-sm-12 width">
+                        <div class="address">
+                            <h3>Useful Links</h3>
+                            <i><img src="../static/icon/1.png"><a href="https://ourworldindata.or
+                          g/explorers/climate-change?facet=none&hideControls=true&Metric=Tem++++++++pe
+                          rature+anomaly&Long-run+series%3F=false&country=OWID_WRL~ATA~Gulkana+Glacier~Lemon
+                          +Creek+G++++++++lacier~North+America~South+Cascade+Glacier~Wolverine+Glacier">Our World in
+                                    Data</a></i>
+                        </div>
+                    </div>
+                    <div class="col-lg-3 col-md-12 col-sm-12 width">
+                        <div class="address">
+                            <h3>Social Media</h3>
+                            <ul class="contant_icon">
+                                <li><img src="../static/icon/fb.png" alt="icon" /></li>
+                                <li><img src="../static/icon/tw.png" alt="icon" /></li>
+                                <li><img src="../static/icon/lin(2).png" alt="icon" /></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>Copyright 2022 All Right Reserved By Eco Healing</p>
+            </div>
+        </div>
+    </footr>
+    <!-- end footer -->
+    <!-- Javascript files-->
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <script src="../static/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/js/jquery-3.0.0.min.js"></script>
+    <script src="../static/js/plugin.js"></script>
+    <!-- sidebar -->
+    <script src="../static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script src="https:cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.js"></script>
+    <script src="../static/js/custom.js"></script>
+    <script>
+        $(document).ready(function () {
+            $(".fancybox").fancybox({
+                openEffect: "none",
+                closeEffect: "none"
+            });
 
-{% endblock %}
+            $(".zoom").hover(function () {
+
+                $(this).addClass('transition');
+            }, function () {
+
+                $(this).removeClass('transition');
+            });
+        });
+
+    </script>
+</body>
+
+</html>
